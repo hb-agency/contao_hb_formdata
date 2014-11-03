@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_form']['list']['operations']['submissions'] = array
 (
 	'label'               => &$GLOBALS['TL_LANG']['tl_form']['submissions'],
 	'href'                => 'table=tl_form_submission',
-	'icon'                => 'system/modules/hbformdata/assets/img/icon-database-014.png'
+	'icon'                => 'system/modules/hb_formdata/assets/img/icon-database-014.png'
 );
 
 

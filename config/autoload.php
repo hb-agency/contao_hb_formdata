@@ -12,4 +12,4 @@
 /**
  * Register namespace
  */
-NamespaceClassLoader::add('HBAgency', 'system/modules/hbformdata/library');
+NamespaceClassLoader::add('HBAgency', 'system/modules/hb_formdata/library');

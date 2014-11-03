@@ -21,10 +21,3 @@ $GLOBALS['TL_HOOKS']['processFormData'][]	= array('\HBAgency\Hooks\ProcessFormDa
  */
 $GLOBALS['BE_MOD']['content']['form']['tables'][] = 'tl_form_submission';
 $GLOBALS['BE_MOD']['content']['form']['tables'][] = 'tl_form_submission_data';
-
-
-/**
- * Models
- */
-$GLOBALS['TL_MODELS'][\HBAgency\Model\FormSubmissionModel::getTable()] = 'HBAgency\Model\FormSubmissionModel';
-$GLOBALS['TL_MODELS'][\HBAgency\Model\FormSubmissionDataModel::getTable()] = 'HBAgency\Model\FormSubmissionDataModel';
