@@ -44,11 +44,21 @@ class Export extends \Backend
 			}
 		}
 		
+		if (!$arrOptions['order'])
+		{
+			$arrOptions['order'] = 'id ASC';
+		}
+		
 		// Get submissions
 		$objSubmissions = FormSubmissionModel::findBy($arrColumns, $arrValues, $arrOptions);
 		
 		if ($objSubmissions !== null)
 		{
+			// Get field names
+			$objFields = \Database::getInstance()->prepare("SELECT DISTINCT name FROM ".FormSubmissionDataModel::getTable()." WHERE pid=?")->executeUncached($objSubmissions->first()->id);
+			$objSubmissions->reset();
+			$arrFields = $objFields->numRows ? $objFields->fetchEach('name') : array();
+			
 			while ($objSubmissions->next())
 			{
 				// Get submission data
@@ -56,7 +66,8 @@ class Export extends \Backend
 				
 				if ($objData !== null)
 				{
-					$arrRow = array();
+					// Fill array keys with field names
+					$arrRow = array_fill_keys($arrFields, '');
 					
 					while ($objData->next())
 					{
@@ -68,14 +79,8 @@ class Export extends \Backend
 							$varValue = implode(',', $varValue);
 						}
 						
-						$arrRow[] = $varValue;
+						$arrRow[$objData->current()->name] = $varValue;
 						$varValue = null;
-						
-						// Store field names
-						if ($blnHeaders && !in_array($objData->current()->label, $arrFields))
-						{
-							$arrFields[] = $objData->current()->label;
-						}
 					}
 					
 					$arrData[] = $arrRow;
