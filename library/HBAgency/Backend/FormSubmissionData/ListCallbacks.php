@@ -12,7 +12,7 @@
 namespace HBAgency\Backend\FormSubmissionData;
 
 
-class List extends \Backend
+class ListCallbacks extends \Backend
 {
 	
 	/**
@@ -24,7 +24,7 @@ class List extends \Backend
 	 */
 	public function labelCallback($arrRow)
 	{
-		$varValue = unserialize($arrRow['value']);
+		$varValue = deserialize($arrRow['value']);
 		
 		if (is_array($varValue))
 		{

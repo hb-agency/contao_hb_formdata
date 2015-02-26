@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_form_submission_data'] = array
 		(
 			'fields'                  => array('label', 'value'),
 			'format'                  => '%s %s',
-			'label_callback'		  => array('HBAgency\Backend\FormSubmissionData\List', 'labelCallback'),
+			'label_callback'		  => array('HBAgency\Backend\FormSubmissionData\ListCallbacks', 'labelCallback'),
 		),
 		'global_operations' => array
 		(
