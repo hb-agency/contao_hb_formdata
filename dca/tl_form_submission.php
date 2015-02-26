@@ -50,14 +50,14 @@ $GLOBALS['TL_DCA']['tl_form_submission'] = array
 		),
 		'global_operations' => array
 		(
-			/*'exportDataCSV' => array
+			'exportCSV' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportDataCSV'],
-				'href'                => 'key=exportDataCSV',
-				'class'               => 'header_back',
+				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportCSV'],
+				'href'                => 'key=exportCSV',
+				'icon'                => 'system/modules/hb_formdata/assets/img/icon-csv-016.png',
 				'attributes'          => 'onclick="Backend.getScrollOffset()"'
 			),
-			'exportDataExcel' => array
+			/*'exportDataExcel' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportDataExcel'],
 				'href'                => 'key=exportDataExcel',
