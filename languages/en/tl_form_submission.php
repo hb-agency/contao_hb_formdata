@@ -10,4 +10,8 @@
  */
 
 
+/**
+ * Global operations
+ */
 $GLOBALS['TL_LANG']['tl_form_submission']['exportCSV']						= array('Export CSV', 'Export data to a CSV file.');
+$GLOBALS['TL_LANG']['tl_form_submission']['exportExcel']					= array('Export Excel', 'Export data to a Excel file.');

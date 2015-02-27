@@ -14,6 +14,7 @@
  * Back end modules
  */
 $GLOBALS['BE_MOD']['content']['form']['exportCSV'] 			= array('HBAgency\Backend\FormSubmission\Export\CSV', 'run');
+$GLOBALS['BE_MOD']['content']['form']['exportExcel']		= array('HBAgency\Backend\FormSubmission\Export\Excel', 'run');
 
 
 /**

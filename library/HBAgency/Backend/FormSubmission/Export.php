@@ -25,7 +25,7 @@ class Export extends \Backend
 	 * @param		string
 	 * @return		void
 	 */
-	public static function run($dc=null, $strName='formsubmissions.csv', $blnHeaders=true)
+	public static function run($dc=null, $strName='formsubmissions', $blnHeaders=true)
 	{
 		if (!\Input::get('id')) return;
 		
@@ -99,7 +99,7 @@ class Export extends \Backend
 		}
 		
 		// Auto set name
-		if ($strName == 'formsubmissions.csv')
+		if ($strName == 'formsubmissions')
 		{
 			$strName = 'form_' . \Input::get('id') . '_' . $strName;
 		}

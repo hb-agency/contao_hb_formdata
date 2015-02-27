@@ -57,13 +57,13 @@ $GLOBALS['TL_DCA']['tl_form_submission'] = array
 				'icon'                => 'system/modules/hb_formdata/assets/img/icon-csv-016.png',
 				'attributes'          => 'onclick="Backend.getScrollOffset()"'
 			),
-			/*'exportDataExcel' => array
+			'exportExcel' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportDataExcel'],
-				'href'                => 'key=exportDataExcel',
-				'class'               => 'header_back',
+				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportExcel'],
+				'href'                => 'key=exportExcel',
+				'icon'                => 'system/modules/hb_formdata/assets/img/icon-excel-016.png',
 				'attributes'          => 'onclick="Backend.getScrollOffset()"'
-			),*/
+			),
 			'all' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],

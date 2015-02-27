@@ -25,7 +25,7 @@ class CSV extends Export
 	 * @param		string
 	 * @return		void
 	 */
-	public static function export($arrData, $strName='formsubmissions.csv')
+	public static function export($arrData, $strName='formsubmissions')
 	{
 		// Make sure no output buffer is active
 		// @see http://ch2.php.net/manual/en/function.fpassthru.php#74080
@@ -37,7 +37,7 @@ class CSV extends Export
 		// Open the "save as É" dialogue
 		header('Content-Type: application/octet-stream');
 		header('Content-Transfer-Encoding: binary');
-		header('Content-Disposition: attachment; filename="' . $strName . '"');
+		header('Content-Disposition: attachment; filename="' . $strName . '.csv"');
 		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 		header('Pragma: public');
 		header('Expires: 0');
