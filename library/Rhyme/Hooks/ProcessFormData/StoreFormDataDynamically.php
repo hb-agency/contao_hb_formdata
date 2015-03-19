@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace HBAgency\Hooks\ProcessFormData;
+namespace Rhyme\Hooks\ProcessFormData;
 
-use HBAgency\Model\FormSubmissionModel;
-use HBAgency\Model\FormSubmissionDataModel;
+use Rhyme\Model\FormSubmissionModel;
+use Rhyme\Model\FormSubmissionDataModel;
 
 
 class StoreFormDataDynamically extends \Frontend

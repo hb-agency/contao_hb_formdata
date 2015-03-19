@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_form_submission_data'] = array
 		(
 			'fields'                  => array('label', 'value'),
 			'format'                  => '%s %s',
-			'label_callback'		  => array('HBAgency\Backend\FormSubmissionData\ListCallbacks', 'labelCallback'),
+			'label_callback'		  => array('Rhyme\Backend\FormSubmissionData\ListCallbacks', 'labelCallback'),
 		),
 		'global_operations' => array
 		(

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
@@ -23,7 +23,7 @@ $GLOBALS['TL_DCA']['tl_form']['list']['operations']['submissions'] = array
 (
 	'label'               => &$GLOBALS['TL_LANG']['tl_form']['submissions'],
 	'href'                => 'table=tl_form_submission',
-	'icon'                => 'system/modules/hb_formdata/assets/img/icon-database-014.png'
+	'icon'                => 'system/modules/rhyme_formdata/assets/img/icon-database-014.png'
 );
 
 

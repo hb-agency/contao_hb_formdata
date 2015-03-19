@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace HBAgency\Backend\FormSubmission;
+namespace Rhyme\Backend\FormSubmission;
 
-use HBAgency\Model\FormSubmissionModel;
-use HBAgency\Model\FormSubmissionDataModel;
+use Rhyme\Model\FormSubmissionModel;
+use Rhyme\Model\FormSubmissionDataModel;
 
 
 class Export extends \Backend
@@ -72,7 +72,7 @@ class Export extends \Backend
 					while ($objData->next())
 					{
 						// Get value even if it's an array
-						$varValue = deserialize($objData->current()->value);
+						$varValue = unserialize($objData->current()->value);
 						
 						if (is_array($varValue))
 						{

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
@@ -54,14 +54,14 @@ $GLOBALS['TL_DCA']['tl_form_submission'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportCSV'],
 				'href'                => 'key=exportCSV',
-				'icon'                => 'system/modules/hb_formdata/assets/img/icon-csv-016.png',
+				'icon'                => 'system/modules/rhyme_formdata/assets/img/icon-csv-016.png',
 				'attributes'          => 'onclick="Backend.getScrollOffset()"'
 			),
 			'exportExcel' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_form_submission']['exportExcel'],
 				'href'                => 'key=exportExcel',
-				'icon'                => 'system/modules/hb_formdata/assets/img/icon-excel-016.png',
+				'icon'                => 'system/modules/rhyme_formdata/assets/img/icon-excel-016.png',
 				'attributes'          => 'onclick="Backend.getScrollOffset()"'
 			),
 			'all' => array
@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_form_submission'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_form']['submissions'],
 				'href'                => 'table=tl_form_submission_data',
-				'icon'                => 'system/modules/hb_formdata/assets/img/icon-database-014.png'
+				'icon'                => 'system/modules/rhyme_formdata/assets/img/icon-database-014.png'
 			),
 			'delete' => array
 			(
