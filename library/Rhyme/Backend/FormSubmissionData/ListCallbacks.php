@@ -31,6 +31,6 @@ class ListCallbacks extends \Backend
 			$varValue = array_map('deserialize', implode(',', $varValue));
 		}
 		
-		return $arrRow['label'] . ': ' . $varValue;
+		return $arrRow['label'] . ': ' . ($varValue === false ? $arrRow['value'] : $varValue);
 	}
 }
