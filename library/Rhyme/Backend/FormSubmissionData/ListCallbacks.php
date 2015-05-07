@@ -25,12 +25,13 @@ class ListCallbacks extends \Backend
 	public function labelCallback($arrRow)
 	{
 		$varValue = unserialize($arrRow['value']);
+		$varValue = $varValue === false ? $arrRow['value'] : $varValue;
 		
 		if (is_array($varValue))
 		{
 			$varValue = array_map('deserialize', implode(',', $varValue));
 		}
 		
-		return $arrRow['label'] . ': ' . ($varValue === false ? $arrRow['value'] : $varValue);
+		return $arrRow['label'] . ': ' . $varValue;
 	}
 }

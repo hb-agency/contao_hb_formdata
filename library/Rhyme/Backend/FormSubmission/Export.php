@@ -73,6 +73,7 @@ class Export extends \Backend
 					{
 						// Get value even if it's an array
 						$varValue = unserialize($objData->current()->value);
+						$varValue = $varValue === false ? $objData->current()->value : $varValue;
 						
 						if (is_array($varValue))
 						{
