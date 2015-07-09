@@ -31,6 +31,7 @@ class Export extends \Backend
 		
 		$arrData = array();
 		$arrFields = array();
+		$arrLabels = array();
 		$arrColumns = array('pid=?');
 		$arrValues = array(\Input::get('id'));
 		$arrOptions = array();
@@ -46,7 +47,7 @@ class Export extends \Backend
 		
 		if (!$arrOptions['order'])
 		{
-			$arrOptions['order'] = 'id ASC';
+			$arrOptions['order'] = 'id DESC';
 		}
 		
 		// Get submissions
@@ -55,9 +56,11 @@ class Export extends \Backend
 		if ($objSubmissions !== null)
 		{
 			// Get field names
-			$objFields = \Database::getInstance()->prepare("SELECT DISTINCT name FROM ".FormSubmissionDataModel::getTable()." WHERE pid=?")->executeUncached($objSubmissions->first()->id);
+			$objFields = \Database::getInstance()->prepare("SELECT DISTINCT name, label FROM ".FormSubmissionDataModel::getTable()." WHERE pid=?")
+												 ->executeUncached($objSubmissions->first()->id);
 			$objSubmissions->reset();
 			$arrFields = $objFields->numRows ? $objFields->fetchEach('name') : array();
+			$arrLabels = $objFields->numRows ? $objFields->fetchEach('label') : array();
 			
 			while ($objSubmissions->next())
 			{
@@ -95,7 +98,7 @@ class Export extends \Backend
 		{
 			foreach ($GLOBALS['TL_HOOKS']['exportFormSubmissionData'] as $callback)
 			{
-				list($arrData, $arrFields, $strName, $blnHeaders) = static::importStatic($callback[0])->$callback[1]($arrData, $arrFields, $strName, $blnHeaders, get_called_class());
+				list($arrData, $arrFields, $arrLabels, $strName, $blnHeaders) = static::importStatic($callback[0])->$callback[1]($arrData, $arrFields, $arrLabels, $strName, $blnHeaders, get_called_class());
 			}
 		}
 		
@@ -106,11 +109,11 @@ class Export extends \Backend
 		}
 		
 		// Add headers
-		if ($blnHeaders && !empty($arrFields))
+		if ($blnHeaders && !empty($arrLabels))
 		{
 			array_insert($arrData, 0, array
 			(
-				$arrFields
+				$arrLabels
 			));
 		}
 		
