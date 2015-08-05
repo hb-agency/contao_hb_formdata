@@ -23,6 +23,8 @@ $GLOBALS['TL_DCA']['tl_form_submission_data'] = array
 		'ptable'                      => 'tl_form_submission',
 		'closed'                      => true,
 		'notEditable'                 => true,
+		'notCopyable'				  => true,
+		'doNotCopyRecords'			  => true,
 		'sql' => array
 		(
 			'keys' => array
