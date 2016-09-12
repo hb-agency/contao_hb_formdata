@@ -56,11 +56,26 @@ class Export extends \Backend
 		if ($objSubmissions !== null)
 		{
 			// Get field names
-			$objFields = \Database::getInstance()->prepare("SELECT DISTINCT name, label FROM ".FormSubmissionDataModel::getTable()." WHERE pid=?")
-												 ->executeUncached($objSubmissions->first()->id);
+			$objFields = \Database::getInstance()->prepare("SELECT name, label FROM ".FormSubmissionDataModel::getTable()." WHERE pid IN (".implode(',', $objSubmissions->fetchEach('id')).")")
+												 ->execute();
 			$objSubmissions->reset();
-			$arrFields = $objFields->numRows ? $objFields->fetchEach('name') : array();
-			$arrLabels = $objFields->numRows ? $objFields->fetchEach('label') : array();
+			$arrFields = array();
+			$arrLabels = array();
+			
+			if ($objFields->numRows)
+			{
+				$arrFields = array_unique($objFields->fetchEach('name'));
+				sort($arrFields);
+				$objFields->reset();
+				
+				// Fill array keys with field names
+				$arrLabels = array_fill_keys($arrFields, '');
+				
+				while ($objFields->next())
+				{
+					$arrLabels[$objFields->name] = $objFields->label;
+				}
+			}
 			
 			while ($objSubmissions->next())
 			{
