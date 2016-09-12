@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
  
 /**
  * Register namespace
  */
-NamespaceClassLoader::add('HBAgency', 'system/modules/hb_formdata/library');
+NamespaceClassLoader::add('Rhyme', 'system/modules/rhyme_formdata/library');

@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace HBAgency\Backend\FormSubmission;
+namespace Rhyme\Backend\FormSubmission;
 
-use HBAgency\Model\FormSubmissionModel;
-use HBAgency\Model\FormSubmissionDataModel;
+use Rhyme\Model\FormSubmissionModel;
+use Rhyme\Model\FormSubmissionDataModel;
 
 
 class Export extends \Backend
@@ -31,6 +31,7 @@ class Export extends \Backend
 		
 		$arrData = array();
 		$arrFields = array();
+		$arrLabels = array();
 		$arrColumns = array('pid=?');
 		$arrValues = array(\Input::get('id'));
 		$arrOptions = array();
@@ -46,7 +47,7 @@ class Export extends \Backend
 		
 		if (!$arrOptions['order'])
 		{
-			$arrOptions['order'] = 'id ASC';
+			$arrOptions['order'] = 'id DESC';
 		}
 		
 		// Get submissions
@@ -55,9 +56,26 @@ class Export extends \Backend
 		if ($objSubmissions !== null)
 		{
 			// Get field names
-			$objFields = \Database::getInstance()->prepare("SELECT DISTINCT name FROM ".FormSubmissionDataModel::getTable()." WHERE pid=?")->executeUncached($objSubmissions->first()->id);
+			$objFields = \Database::getInstance()->prepare("SELECT name, label FROM ".FormSubmissionDataModel::getTable()." WHERE pid IN (".implode(',', $objSubmissions->fetchEach('id')).")")
+												 ->execute();
 			$objSubmissions->reset();
-			$arrFields = $objFields->numRows ? $objFields->fetchEach('name') : array();
+			$arrFields = array();
+			$arrLabels = array();
+			
+			if ($objFields->numRows)
+			{
+				$arrFields = array_unique($objFields->fetchEach('name'));
+				sort($arrFields);
+				$objFields->reset();
+				
+				// Fill array keys with field names
+				$arrLabels = array_fill_keys($arrFields, '');
+				
+				while ($objFields->next())
+				{
+					$arrLabels[$objFields->name] = $objFields->label;
+				}
+			}
 			
 			while ($objSubmissions->next())
 			{
@@ -72,7 +90,8 @@ class Export extends \Backend
 					while ($objData->next())
 					{
 						// Get value even if it's an array
-						$varValue = deserialize($objData->current()->value);
+						$varValue = unserialize($objData->current()->value);
+						$varValue = $varValue === false ? $objData->current()->value : $varValue;
 						
 						if (is_array($varValue))
 						{
@@ -94,7 +113,7 @@ class Export extends \Backend
 		{
 			foreach ($GLOBALS['TL_HOOKS']['exportFormSubmissionData'] as $callback)
 			{
-				list($arrData, $arrFields, $strName, $blnHeaders) = static::importStatic($callback[0])->$callback[1]($arrData, $arrFields, $strName, $blnHeaders, get_called_class());
+				list($arrData, $arrFields, $arrLabels, $strName, $blnHeaders) = static::importStatic($callback[0])->$callback[1]($arrData, $arrFields, $arrLabels, $strName, $blnHeaders, get_called_class());
 			}
 		}
 		
@@ -105,11 +124,11 @@ class Export extends \Backend
 		}
 		
 		// Add headers
-		if ($blnHeaders && !empty($arrFields))
+		if ($blnHeaders && !empty($arrLabels))
 		{
 			array_insert($arrData, 0, array
 			(
-				$arrFields
+				$arrLabels
 			));
 		}
 		

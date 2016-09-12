@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Copyright (C) 2014 HB Agency
+ * Copyright (C) 2015 Rhyme Digital
  * 
- * @author		Blair Winans <bwinans@hbagency.com>
- * @author		Adam Fisher <afisher@hbagency.com>
- * @link		http://www.hbagency.com
+ * @author		Blair Winans <blair@rhyme.digital>
+ * @author		Adam Fisher <adam@rhyme.digital>
+ * @link		http://rhyme.digital
  * @license		http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
 
-namespace HBAgency\Backend\FormSubmission\Export;
+namespace Rhyme\Backend\FormSubmission\Export;
 
-use HBAgency\Backend\FormSubmission\Export;
+use Rhyme\Backend\FormSubmission\Export;
 
 
 class CSV extends Export
